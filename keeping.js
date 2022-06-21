@@ -77,6 +77,11 @@
         "selected-image-2",
         "selected-image-1"]
 
+    /* Used to determine:
+    1. The image overlay text
+    2. The height of the images within each 'category' of images, this is due to the possibility that different tissue categories
+     may have different sized images. Each tissue needs to have the same sized images otherwise it will look off. However,
+     each tissue category can have different sized images.*/
     const categoryCalculations = (() => {
         const countWithinEachCategory = {}
         const ratios = {}
@@ -119,6 +124,7 @@
         return button
     }
 
+    // Used to create the images
     function createImageContainer(image, classesToAdd, counter) {
         const containerDiv = document.createElement('div')
         containerDiv.classList.add(...classesToAdd)
@@ -202,7 +208,6 @@
         const categoryButtons = document.getElementsByClassName('category-button')
         const informationOverlay = document.getElementById("information-content")
         const rootCssValue = document.querySelector(':root')
-        // categoryCalculations.getCurrentRatio("tonsil-tissue")
 
         for (let i = 0; i < categoryButtons.length; i++) {
             categoryButtons[i].addEventListener('click', () => {
@@ -213,7 +218,6 @@
 
                 // Update CSS root value for differing category heights
                 rootCssValue.style.setProperty('--height', `${categoryCalculations.getCurrentRatio(categoryClass)*100}%`);
-                console.log(categoryCalculations.getCurrentRatio(categoryClass))
 
                 // Buttons to display
                 addRemoveClasses("", "hide", buttonContainer.querySelectorAll(`.${categoryClass}`))
@@ -221,6 +225,7 @@
                 // Buttons to hide
                 addRemoveClasses("hide", "", buttonContainer.querySelectorAll(`:not(.${categoryClass})`))
 
+                // Reset the priority queue
                 reset()
                 }
             )
@@ -253,22 +258,23 @@
         }
     }
 
-    (function init() {
-        createCategoryButtons(data)
-        addCategoryButtonEventListeners()
+    function setDocumentEvents() {
         window.addEventListener('load', function () {
             document.querySelector('.category-button').click()
         })
 
+        // Rather than adding 50 event listeners for the individual buttons, add one listener that listens for the specific
+        // classes and then runs the specific function.
+        document.addEventListener('click', function (event) {
+            if (event.target.matches('.click_button')) {
+                addSelectionButtonEventListeners(event.target)
+            }
+        }, false);
+    }
+
+    (function init() {
+        createCategoryButtons(data)
+        addCategoryButtonEventListeners()
+        setDocumentEvents()
     })();
-
-    // Rather than adding 50 event listeners for the individual buttons, add one listener that listens for the specific
-    // classes and then runs the specific function.
-    document.addEventListener('click', function (event) {
-        // console.log(event.target.dataset.imgid);
-        if (event.target.matches('.click_button')) {
-            addSelectionButtonEventListeners(event.target)
-        }
-    }, false);
-
 })();

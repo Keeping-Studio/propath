@@ -45,12 +45,15 @@
 
 #information-content {
     display: block;
+    padding-bottom: 5px;
+    font-weight: 100;
 }
 
 #information-title {
     display: block;
     font-size: 20px;
     font-weight: 800;
+    padding-bottom: 8px;
 }
 
 #button-container {
@@ -237,14 +240,19 @@ body,
         width: auto;
         margin: 10px 10px;
     }
+    #selection-button-container {
+        padding: 10px;
+    }
     #category-button-container button.category-button {
         text-align: center;
         padding: 10px 15px;
+        font-size: 20px;
     }
     #category-button-container {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        margin-bottom: 0;
     }
     #category-button-container button {
         white-space: normal;
@@ -252,8 +260,19 @@ body,
     #image-information-container {
         position: relative;
         width: 100%;
+        padding: 20px;
     }
     #selection-button-container button {
         padding: 1px 6px;
+        min-width: auto;
+        height: 50px;
+        font-size: 15px;
+        border-width: 3px;
+    }
+    #information-title {
+        font-size: 18px;
+    }
+    #content {
+        font-size: 14px;
     }
 }
