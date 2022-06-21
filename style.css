@@ -1,0 +1,259 @@
+:root {
+    --primary-blue: #006bff;
+    --primary-red: #ef4770;
+    --primary-aqua: #54e5da;
+    --primary-green: #0bd59f;
+    --primary-pink: #e17fff;
+    --primary-yellow: #ffd166;
+    --border-grey: #e2e2ea;
+    --text-white: #ffffff;
+    --text-grey: #576a90;
+    --text-dark:  #0e2b60;
+    --background-blue: #f2f8ff;
+    --height: 50%;
+}
+
+#root {
+    max-width: 1200px;
+    font-family: Arial, sans-serif;
+}
+
+#parent-image-container {
+    padding-top: var(--height);
+    background-color: #000;
+    position: relative;
+}
+
+#image-information-container {
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    min-width: 200px;
+    padding: 30px;
+    background-color: var(--text-dark);
+    display: inline-block;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+#image-information-container.hide-content {
+    height: 20px;
+    padding: 0;
+    min-width: 80px;
+}
+
+#information-content {
+    display: block;
+}
+
+#information-title {
+    display: block;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+#button-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#category-button-container {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    min-width: 275px;
+}
+
+#category-button-container,
+#selection-button-container,
+#category-button-container button {
+    margin: 5px;
+}
+
+#button-container,
+#category-button-container {
+    background-color: var(--text-white);
+}
+
+
+#selection-button-container {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#selection-button-container,
+#category-button-container {
+    margin: 30px 15px;
+    border-radius: 10px;
+}
+
+body,
+#selection-button-container {
+    background-color: var(--background-blue);
+
+}
+
+#selection-button-container button {
+    cursor: pointer;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 4px solid var(--border-grey);
+    background-color: var(--text-white);
+    padding: 10px 15px;
+    font-size: 20px;
+    border-radius: 7px;
+    transition: 0.2s;
+    min-width: 80px;
+    height: 65px;
+    font-weight: 800;
+    flex: 1 1 auto;
+    margin: 10px;
+}
+
+#category-button-container button {
+    cursor: pointer;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    background-color: var(--text-white);
+    color: var(--text-dark);
+    font-size: 25px;
+    border-radius: 7px;
+    transition: 0.2s;
+    min-width: 80px;
+    min-height: 65px;
+    font-weight: 800;
+}
+
+#button-container .button-is-clicked {
+    background-color: var(--background-blue);
+    color: var(--primary-blue);
+}
+
+#category-button-container button.category-button {
+    text-align: left;
+    padding: 10px 10px 10px 30px;
+}
+
+#parent-image-container .image-container {
+    mix-blend-mode: lighten;
+    transition-duration: .3s;
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    visibility: hidden;
+    transition: visibility 0s, opacity 0.3s
+}
+
+#parent-image-container .image-container[class*="selected-image-"] {
+    opacity: 1;
+    visibility: visible;
+}
+
+#parent-image-container .selected-image-1::after,
+#selection-button-container button.selected-image-1 {
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+#selection-button-container button.selected-image-2,
+#parent-image-container .selected-image-2::after {
+    background: var(--primary-red);
+    border-color: var(--primary-red);
+}
+
+#parent-image-container .selected-image-3::after,
+#selection-button-container button.selected-image-3 {
+    background: var(--primary-aqua);
+    border-color: var(--primary-aqua);
+}
+
+#parent-image-container .selected-image-4::after,
+#selection-button-container button.selected-image-4 {
+    background: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
+#parent-image-container .selected-image-5::after,
+#selection-button-container button.selected-image-5 {
+    background: var(--primary-pink);
+    border-color: var(--primary-pink);
+}
+
+#parent-image-container .selected-image-6::after,
+#selection-button-container button.selected-image-6 {
+    background: var(--primary-yellow);
+    border-color: var(--primary-yellow);
+}
+
+#selection-button-container button.selected-image-3,
+#selection-button-container button.selected-image-4,
+#selection-button-container button {
+    color: var(--text-grey);
+}
+
+#selection-button-container button.selected-image-1,
+#selection-button-container button.selected-image-2,
+#selection-button-container button.selected-image-4,
+#selection-button-container button.selected-image-5 {
+    color: var(--text-white);
+}
+
+#parent-image-container .image-container::after {
+    height: 100%;
+    width: 100%;
+    content: "";
+    mix-blend-mode: multiply;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#parent-image-container .image-container img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.show {
+    display: inline-block;
+}
+
+.hide {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    #button-container {
+        flex-direction: column;
+    }
+    #category-button-container,
+    #selection-button-container {
+        width: auto;
+        margin: 10px 10px;
+    }
+    #category-button-container button.category-button {
+        text-align: center;
+        padding: 10px 15px;
+    }
+    #category-button-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    #category-button-container button {
+        white-space: normal;
+    }
+    #image-information-container {
+        position: relative;
+        width: 100%;
+    }
+    #selection-button-container button {
+        padding: 1px 6px;
+    }
+}
