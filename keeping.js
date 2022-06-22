@@ -238,7 +238,7 @@
         }
     }
 
-    function addSelectionButtonEventListeners(target) {
+    function handleSelectionButtonClick(target) {
         const imageContainer = document.querySelector(`.image-container[data-imgid='${target.dataset.imgid}']`)
         const currentClasses = imageContainer.className.split(' ')
 
@@ -273,7 +273,7 @@
         // classes and then runs the specific function.
         document.addEventListener('click', function (event) {
             if (event.target.matches('.click_button')) {
-                addSelectionButtonEventListeners(event.target)
+                handleSelectionButtonClick(event.target)
             }
         }, false);
     }
