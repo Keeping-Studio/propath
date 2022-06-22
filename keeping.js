@@ -5,60 +5,58 @@
     })();
 
 
-
     const data = {
 
         // Button category 1
         "Tonsil Tissue": {
-            "./assets/aSMA.jpg": "aSMA",
-            "./assets/CD3.jpg": "CD3",
-            "./assets/CD4.jpg": "CD4",
-            "./assets/CD8.jpg": "CD8",
-            "./assets/CD11b.jpg": "CD11b",
-            "./assets/CD11c.jpg": "CD11c",
-            "./assets/CD15.jpg": "CD15",
-            "./assets/CD20.jpg": "CD20",
-            "./assets/CD25.jpg": "CD25",
-            "./assets/CD38.jpg": "CD38"
+             "aSMA": "./assets/aSMA.jpg",
+             "CD3": "./assets/CD3.jpg",
+             "CD4": "./assets/CD4.jpg",
+             "CD8": "./assets/CD8.jpg",
+             "CD11b": "./assets/CD11b.jpg",
+             "CD11c": "./assets/CD11c.jpg",
+             "CD15": "./assets/CD15.jpg",
+             "CD20": "./assets/CD20.jpg",
+             "CD25": "./assets/CD25.jpg",
+             "CD38": "./assets/CD38.jpg"
         },
-
         // EXAMPLE FILES
         "Example Tissue": {
-            "./examples/CD3.png": "CD3",
-            "./examples/CD4.png": "CD4",
-            "./examples/CD8.png": "CD8",
-            "./examples/CD20.png": "CD20",
-            "./examples/CD68.png": "CD68",
-            "./examples/CK.png": "CK",
-            "./examples/DAPI.png": "DAPI",
-            "./examples/FOXP3.png": "FOXP3",
-            "./examples/Ki67.png": "Ki67",
-            "./examples/PD-1.png": "PD-1",
-            "./examples/PD-L1.png": "PD-L1",
+             "CD3": "./examples/CD3.png",
+             "CD4": "./examples/CD4.png",
+             "CD8": "./examples/CD8.png",
+             "CD20": "./examples/CD20.png",
+             "CD68": "./examples/CD68.png",
+             "CK": "./examples/CK.png",
+             "DAPI": "./examples/DAPI.png",
+             "FOXP3": "./examples/FOXP3.png",
+             "Ki67": "./examples/Ki67.png",
+             "PD-1": "./examples/PD-1.png",
+             "PD-L1": "./examples/PD-L1.png"
         },
 
         // Button category 2
         "Lung Tissue": {
-            "./assets/HLA-DR.jpg": "HLA-DR",
-            "./assets/Ki67.jpg": "Ki67",
-            "./assets/LAG3.jpg": "LAG3",
-            "./assets/NaK-ATPase.jpg": "NaK-ATPase",
-            "./assets/panCK.jpg": "panCK",
-            "./assets/PD-1.jpg": "PD-1",
-            "./assets/PD-L1.jpg": "PD-L1",
-            "./assets/Vimentin.jpg": "Vimentin"
+             "HLA-DR": "./assets/HLA-DR.jpg",
+             "Ki67": "./assets/Ki67.jpg",
+             "LAG3": "./assets/LAG3.jpg",
+             "NaK-ATPase": "./assets/NaK-ATPase.jpg",
+             "panCK": "./assets/panCK.jpg",
+             "PD-1": "./assets/PD-1.jpg",
+             "PD-L1": "./assets/PD-L1.jpg",
+             "Vimentin": "./assets/Vimentin.jpg"
         },
 
         // // Button category 3
         // "Lymph Node": {
-        //     "./assets/CD45.jpg": "CD45",
-        //     "./assets/CD45RA.jpg": "CD45RA",
-        //     "./assets/CD56.jpg": "CD56",
-        //     "./assets/CD68.jpg": "CD68",
-        //     "./assets/CD163.jpg": "CD163",
-        //     "./assets/DAPI.jpg": "DAPI",
-        //     "./assets/FOXP3.jpg": "FOXP3"
-        // },
+        //      "CD45": "./assets/CD45.jpg",
+        //      "CD45RA": "./assets/CD45RA.jpg",
+        //      "CD56": "./assets/CD56.jpg",
+        //      "CD68": "./assets/CD68.jpg",
+        //      "CD163": "./assets/CD163.jpg",
+        //      "DAPI": "./assets/DAPI.jpg",
+        //      "FOXP3": "./assets/FOXP3.jpg"
+        // }
     }
 
     const classesObject = {
@@ -85,6 +83,7 @@
     const categoryCalculations = (() => {
         const countWithinEachCategory = {}
         const ratios = {}
+        const widths = {}
 
         for (const item in data) {
             countWithinEachCategory[item] = Object.keys(data[item]).length
@@ -100,17 +99,23 @@
             const updatedKey = convertKey(key)
             return `${countWithinEachCategory[updatedKey]} markers on ${updatedKey.toLowerCase()}`
         }
+
+        // This function needs refactoring if data switches to the correct way
         function getImageDimensions(item) {
             let img = new Image();
-            img.src = Object.keys(data[item])[0]
+            img.src = Object.values(data[item])[0]
             img.onload = function() {
                 ratios[item] = this.height / this.width
+                widths[item] = this.width
             }
         }
         const getCurrentRatio = (key) => {
             return ratios[convertKey(key)]
         }
-        return {getUpdateString, getCurrentRatio}
+        const getCurrentWidth = (key) => {
+            return widths[convertKey(key)]
+        }
+        return {getUpdateString, getCurrentRatio, getCurrentWidth}
     })();
 
     // Used to create the buttons of both the categories and inputs
@@ -163,12 +168,12 @@
 
             // Create images
             document.getElementById('parent-image-container').appendChild(
-                createImageContainer(property, ["image-container"], count)
+                createImageContainer(keyValuePairs[property], ["image-container"], count)
             )
 
             // Create buttons
             document.getElementById('selection-button-container').appendChild(
-                createButton(keyValuePairs[property], buttonClassesToAdd, count))
+                createButton(property, buttonClassesToAdd, count))
         }
     }
 
@@ -216,8 +221,9 @@
                 addRemoveClasses("", "button-is-clicked", categoryButtons)
                 categoryButtons[i].classList.add('button-is-clicked')
 
-                // Update CSS root value for differing category heights
+                // Update CSS root value for differing category heights and widths
                 rootCssValue.style.setProperty('--height', `${categoryCalculations.getCurrentRatio(categoryClass)*100}%`);
+                rootCssValue.style.setProperty('--max-width', `${categoryCalculations.getCurrentWidth(categoryClass)}px`);
 
                 // Buttons to display
                 addRemoveClasses("", "hide", buttonContainer.querySelectorAll(`.${categoryClass}`))

@@ -11,17 +11,20 @@
     --text-dark:  #0e2b60;
     --background-blue: #f2f8ff;
     --height: 50%;
+    --max-width: 1200px;
 }
 
 #root {
-    max-width: 1200px;
+    max-width: var(--max-width);
     font-family: Arial, sans-serif;
+    transition: 0.5s;
 }
 
 #parent-image-container {
     padding-top: var(--height);
     background-color: #000;
     position: relative;
+    transition: 0.5s;
 }
 
 #image-information-container {
