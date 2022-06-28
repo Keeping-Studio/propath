@@ -7,21 +7,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<div id="root">
-    <div id="parent-image-container">
-        <div id="image-information-container">
-            <div id="content">
-                <span id="information-title">Select a tissue, then tap to toggle on and off</span>
-                <span id="information-content"></span>
-                <span>Produced at Propath UK using the Lunaphore COMET</span>
-            </div>
-        </div>
-    </div>
-    <div id="button-container">
-        <div id="category-button-container"></div>
-        <div id="selection-button-container"></div>
-    </div>
-</div>
+<div id="test-root"></div>
+
 <script src="keeping.js"></script>
 </body>
 </html>
+<script>
+    const config = {
+        settings: {
+            root_element_id: 'test-root',
+            string_title: 'Select a tissue, then tap to toggle on and off',
+            string_subtitle:'Produced at Propath UK using the Lunaphore COMET'
+        },
+        data: {
+            // Button category 1
+            "Tonsil Tissue": {
+                "aSMA": "./assets/aSMA.jpg",
+                "CD3": "./assets/CD3.jpg",
+                "CD4": "./assets/CD4.jpg",
+                "CD8": "./assets/CD8.jpg",
+                "CD11b": "./assets/CD11b.jpg",
+                "CD11c": "./assets/CD11c.jpg",
+                "CD15": "./assets/CD15.jpg",
+                "CD20": "./assets/CD20.jpg",
+                "CD25": "./assets/CD25.jpg",
+                "CD38": "./assets/CD38.jpg"
+            },
+            // EXAMPLE FILES
+            "Example Tissue": {
+                "CD3": "./examples/CD3.png",
+                "CD4": "./examples/CD4.png",
+                "CD8": "./examples/CD8.png",
+                "CD20": "./examples/CD20.png",
+                "CD68": "./examples/CD68.png",
+                "CK": "./examples/CK.png",
+                "DAPI": "./examples/DAPI.png",
+                "FOXP3": "./examples/FOXP3.png",
+                "Ki67": "./examples/Ki67.png",
+                "PD-1": "./examples/PD-1.png",
+                "PD-L1": "./examples/PD-L1.png"
+            },
+
+            // Button category 2
+            "Lung Tissue": {
+                "HLA-DR": "./assets/HLA-DR.jpg",
+                "Ki67": "./assets/Ki67.jpg",
+                "LAG3": "./assets/LAG3.jpg",
+                "NaK-ATPase": "./assets/NaK-ATPase.jpg",
+                "panCK": "./assets/panCK.jpg",
+                "PD-1": "./assets/PD-1.jpg",
+                "PD-L1": "./assets/PD-L1.jpg",
+                "Vimentin": "./assets/Vimentin.jpg"
+            },
+
+        }
+    }
+    hallwayImageBlend().init(config)
+
+</script>
+
+
+

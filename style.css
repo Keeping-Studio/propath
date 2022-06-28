@@ -12,15 +12,17 @@
     --background-blue: #f2f8ff;
     --height: 50%;
     --max-width: 1200px;
+    --pointer-events: auto;
+    --disabled-background:white;
 }
 
-#root {
+#hallway-blender-root {
     max-width: var(--max-width);
     font-family: Arial, sans-serif;
     transition: 0.5s;
 }
 
-#parent-image-container {
+#hallway-parent-image-container {
     padding-top: var(--height);
     background-color: #000;
     position: relative;
@@ -144,7 +146,7 @@ body,
     padding: 10px 10px 10px 30px;
 }
 
-#parent-image-container .image-container {
+#hallway-parent-image-container .image-container {
     mix-blend-mode: lighten;
     transition-duration: .3s;
     position: absolute;
@@ -156,43 +158,48 @@ body,
     visibility: hidden;
     transition: visibility 0s, opacity 0.3s
 }
+#selection-button-container .click_button:not([class*="selected-image-"]){
+    background-color: var(--disabled-background);
+    pointer-events: var(--pointer-events);
 
-#parent-image-container .image-container[class*="selected-image-"] {
+}
+
+#hallway-parent-image-container .image-container[class*="selected-image-"] {
     opacity: 1;
     visibility: visible;
 }
 
-#parent-image-container .selected-image-1::after,
+#hallway-parent-image-container .selected-image-1::after,
 #selection-button-container button.selected-image-1 {
     background: var(--primary-blue);
     border-color: var(--primary-blue);
 }
 
 #selection-button-container button.selected-image-2,
-#parent-image-container .selected-image-2::after {
+#hallway-parent-image-container .selected-image-2::after {
     background: var(--primary-red);
     border-color: var(--primary-red);
 }
 
-#parent-image-container .selected-image-3::after,
+#hallway-parent-image-container .selected-image-3::after,
 #selection-button-container button.selected-image-3 {
     background: var(--primary-aqua);
     border-color: var(--primary-aqua);
 }
 
-#parent-image-container .selected-image-4::after,
+#hallway-parent-image-container .selected-image-4::after,
 #selection-button-container button.selected-image-4 {
     background: var(--primary-green);
     border-color: var(--primary-green);
 }
 
-#parent-image-container .selected-image-5::after,
+#hallway-parent-image-container .selected-image-5::after,
 #selection-button-container button.selected-image-5 {
     background: var(--primary-pink);
     border-color: var(--primary-pink);
 }
 
-#parent-image-container .selected-image-6::after,
+#hallway-parent-image-container .selected-image-6::after,
 #selection-button-container button.selected-image-6 {
     background: var(--primary-yellow);
     border-color: var(--primary-yellow);
@@ -211,7 +218,7 @@ body,
     color: var(--text-white);
 }
 
-#parent-image-container .image-container::after {
+#hallway-parent-image-container .image-container::after {
     height: 100%;
     width: 100%;
     content: "";
@@ -221,7 +228,7 @@ body,
     top: 0;
     left: 0;
 }
-#parent-image-container .image-container img {
+#hallway-parent-image-container .image-container img {
     max-width: 100%;
     vertical-align: middle;
 }
@@ -275,7 +282,7 @@ body,
     #information-title {
         font-size: 18px;
     }
-    #content {
+    #hw-overlay-content {
         font-size: 14px;
     }
 }
