@@ -234,12 +234,12 @@ function hallwayImageBlend() {
         }
 
         function disableButtons() {
-            rootCssValue.style.setProperty('--pointer-events', `none`);
+            rootCssValue.style.setProperty('--cursor', `not-allowed`);
             rootCssValue.style.setProperty('--disabled-background', `#e2e2ea`);
         }
 
         function enableButtons() {
-            rootCssValue.style.setProperty('--pointer-events', `auto`);
+            rootCssValue.style.setProperty('--cursor', `auto`);
             rootCssValue.style.setProperty('--disabled-background', `white`);
         }
 

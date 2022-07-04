@@ -12,8 +12,8 @@
     --background-blue: #f2f8ff;
     --height: 50%;
     --max-width: 1200px;
-    --pointer-events: auto;
     --disabled-background:white;
+    --cursor: auto;
 }
 
 #hallway-blender-root {
@@ -112,11 +112,11 @@ body,
     border: 4px solid var(--border-grey);
     background-color: var(--text-white);
     padding: 10px 15px;
-    font-size: 20px;
+    font-size: 16px;
     border-radius: 7px;
     transition: 0.2s;
     min-width: 80px;
-    height: 65px;
+    height: 60px;
     font-weight: 800;
     flex: 1 1 auto;
     margin: 10px;
@@ -129,7 +129,7 @@ body,
     border: 1px solid transparent;
     background-color: var(--text-white);
     color: var(--text-dark);
-    font-size: 25px;
+    font-size: 20px;
     border-radius: 7px;
     transition: 0.2s;
     min-width: 80px;
@@ -163,7 +163,7 @@ body,
 }
 #selection-button-container .click_button:not([class*="selected-image-"]){
     background-color: var(--disabled-background);
-    pointer-events: var(--pointer-events);
+    cursor: var(--cursor);
 
 }
 
@@ -265,7 +265,7 @@ body,
     #category-button-container button.category-button {
         text-align: center;
         padding: 10px 15px;
-        font-size: 20px;
+        font-size: 16px;
     }
     #category-button-container {
         display: flex;
@@ -285,14 +285,14 @@ body,
         padding: 1px 6px;
         min-width: auto;
         height: 50px;
-        font-size: 15px;
+        font-size: 12px;
         border-width: 3px;
     }
     #information-title {
         font-size: 18px;
     }
     #hw-overlay-content {
-        font-size: 14px;
+        font-size: 13px;
     }
 }
 
