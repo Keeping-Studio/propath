@@ -14,12 +14,37 @@
     --max-width: 1200px;
     --disabled-background:white;
     --cursor: auto;
+    --heading-font: Poppins;
+    --text-font-regular: Heebo-Regular;
+    --text-font-bold: Heebo-Bold;
+}
+@font-face {
+    font-family: Poppins;
+    src: url(Poppins-SemiBold.ttf);
+}
+@font-face {
+    font-family: Heebo-Regular;
+    src: url(Heebo-Regular.ttf);
+}
+@font-face {
+    font-family: Heebo-Bold;
+    src: url(Heebo-Bold.ttf);
+}
+#information-title,
+.category-button {
+    font-family: var(--heading-font);
 }
 
+#information-content,
+#information-subtitle {
+    font-family: var(--text-font-regular);
+}
+#selection-button-container .click_button {
+    font-family: var(--text-font-bold);
+}
 #hallway-blender-root {
     max-width: var(--max-width);
     max-width: 1400px;
-    font-family: Arial, sans-serif;
     transition: 0.5s;
 }
 
@@ -58,7 +83,6 @@
 #information-title {
     display: block;
     font-size: 20px;
-    font-weight: 800;
     padding-bottom: 8px;
 }
 
@@ -118,8 +142,8 @@ body,
     min-width: 80px;
     height: 60px;
     font-weight: 800;
-    flex: 1 1 auto;
     margin: 10px;
+    flex-basis: 60px;
 }
 
 #category-button-container button {
