@@ -11,7 +11,7 @@
     --text-dark:  #0e2b60;
     --background-blue: #f2f8ff;
     --height: 50%;
-    --max-width: 1200px;
+    --max-width: 1000px;
     --disabled-background:white;
     --cursor: auto;
     --heading-font: Poppins;
@@ -38,13 +38,15 @@
 #information-content,
 #information-subtitle {
     font-family: var(--text-font-regular);
+    letter-spacing: 0.13px;
+    color: var(--background-blue);
 }
 #selection-button-container .click_button {
     font-family: var(--text-font-bold);
 }
 #hallway-blender-root {
     max-width: var(--max-width);
-    max-width: 1400px;
+    max-width: 1000px;
     transition: 0.5s;
 }
 
@@ -76,14 +78,16 @@
 
 #information-content {
     display: block;
-    padding-bottom: 5px;
+    padding-bottom: 3px;
     font-weight: 100;
 }
 
 #information-title {
     display: block;
-    font-size: 20px;
+    font-size: 18px;
     padding-bottom: 8px;
+    letter-spacing: 0.18px;
+    color: var(--text-white);
 }
 
 #button-container {
@@ -111,16 +115,15 @@
 
 
 #selection-button-container {
-    padding: 20px;
+    padding: 10px 20px;
     width: 100%;
-    display: flex;
     flex-wrap: wrap;
 }
 
 #selection-button-container,
 #category-button-container {
     margin: 30px 15px;
-    border-radius: 10px;
+    border-radius: 4px;
 }
 
 body,
@@ -133,16 +136,16 @@ body,
     cursor: pointer;
     white-space: nowrap;
     vertical-align: middle;
-    border: 4px solid var(--border-grey);
+    border: 2px solid var(--border-grey);
     background-color: var(--text-white);
     padding: 10px 15px;
-    font-size: 16px;
-    border-radius: 7px;
+    font-size: 12px;
+    border-radius: 4px;
     transition: 0.2s;
-    min-width: 80px;
-    height: 60px;
+    min-width: 60px;
+    height: 40px;
     font-weight: 800;
-    margin: 10px;
+    margin: 7px;
 }
 
 #category-button-container button {
@@ -152,11 +155,11 @@ body,
     border: 1px solid transparent;
     background-color: var(--text-white);
     color: var(--text-dark);
-    font-size: 20px;
-    border-radius: 7px;
+    font-size: 18px;
+    border-radius: 4px;
     transition: 0.2s;
     min-width: 80px;
-    min-height: 65px;
+    min-height: 55px;
     font-weight: 800;
 }
 
@@ -289,6 +292,7 @@ body,
         text-align: center;
         padding: 10px 15px;
         font-size: 16px;
+        letter-spacing: 0.16px;
     }
     #category-button-container {
         display: flex;
@@ -307,24 +311,16 @@ body,
     #selection-button-container button {
         padding: 1px 6px;
         min-width: 60px;
-        height: 50px;
+        height: 40px;
         font-size: 12px;
-        border-width: 3px;
     }
     #information-title {
         font-size: 18px;
+        letter-spacing: 0.18px;
     }
-    #hw-overlay-content {
+    #information-content,
+    #information-subtitle {
+        letter-spacing: 0.1px;
         font-size: 13px;
-    }
-}
-
-@media (max-width: 350px) {
-    #category-button-container button.category-button {
-        padding: 0;
-        font-size: 18px;
-    }
-    #selection-button-container button {
-        font-size: 12px;
     }
 }
