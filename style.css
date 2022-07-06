@@ -144,7 +144,6 @@ body,
     transition: 0.2s;
     min-width: 60px;
     height: 40px;
-    font-weight: 800;
     margin: 7px;
 }
 
@@ -160,7 +159,6 @@ body,
     transition: 0.2s;
     min-width: 80px;
     min-height: 55px;
-    font-weight: 800;
 }
 
 #button-container .button-is-clicked {
