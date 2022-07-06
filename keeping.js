@@ -197,6 +197,9 @@ function hallwayImageBlend() {
                         // Reset the priority queue and enable buttons
                         reset();
                         enableButtons();
+
+                        // Get first instance of button class and click display it
+                        document.querySelector(`.click_button.${categoryClass}`).click()
                     }
                 )
             }
