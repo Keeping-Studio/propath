@@ -103,8 +103,7 @@
 }
 
 #category-button-container,
-#selection-button-container,
-#category-button-container button {
+#selection-button-container {
     margin: 5px;
 }
 
@@ -115,14 +114,14 @@
 
 
 #selection-button-container {
-    padding: 10px 20px;
+    padding: 10px;
     width: 100%;
     flex-wrap: wrap;
 }
 
 #selection-button-container,
 #category-button-container {
-    margin: 30px 15px;
+    margin: 15px;
     border-radius: 4px;
 }
 
@@ -321,4 +320,7 @@ body,
         letter-spacing: 0.1px;
         font-size: 13px;
     }
+}
+#category-button-container {
+  margin-right: 0;
 }

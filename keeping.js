@@ -114,15 +114,15 @@ function hallwayImageBlend() {
                 document.getElementById('category-button-container').appendChild(
                     createButton((key.length === 0 ? categoryIterationCount : key), classesToAdd));
 
-                setUp(data[key], `button-number-${categoryIterationCount}`, first_iteration);
+                setUp(data[key], `button-number-${categoryIterationCount}`);
                 first_iteration = false;
                 categoryIterationCount++;
             }
         }
 
-        function setUp(keyValuePairs, additionalClasses, first_iteration) {
+        function setUp(keyValuePairs, additionalClasses) {
             for (const property in keyValuePairs) {
-                const buttonClassesToAdd = [`click_button`, `${additionalClasses}`, ...(first_iteration ? ["hide"] : [])];
+                const buttonClassesToAdd = [`click_button`, `${additionalClasses}`, 'hide'];
 
                 // Create buttons
                 document.getElementById('selection-button-container').appendChild(
