@@ -264,7 +264,7 @@ function hallwayImageBlend() {
                 const rootElement = (settings.root_element_id.startsWith('#')
                     ? document.querySelector(settings.root_element_id)
                     : document.querySelector(`#${settings.root_element_id}`));
-                const documentStructure = `
+                rootElement.innerHTML = `
                     <div id="hallway-blender-root">
                         <div id="hallway-parent-image-container">
                             <div id="image-information-container">
@@ -281,7 +281,6 @@ function hallwayImageBlend() {
                         </div>
                     </div>
                     `;
-                rootElement.innerHTML = documentStructure;
             } catch(e) {
                 alert("Please enter a valid root element id");
             }

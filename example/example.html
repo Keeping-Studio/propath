@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Blender Demo</title>
+
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="../hw-image-blender.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <div id="container"></div>
+    <script src="../hw-image-blender.js"></script>
+    <script>
+        const hw__blender_config = {
+            settings: {
+                root_element_id: 'container',
+                string_title: 'Select a tissue, then tap to toggle on and off',
+                string_subtitle:'Produced at Propath UK using the Lunaphore COMET',
+            },
+            data: {
+                "Tonsil Tissue": {
+                    "aSMA": "images/aSMA.jpg",
+                    "CD3": "images/CD3.jpg"
+                },
+                "Example Tissue": {
+                    "CD3": "images/CD3.png",
+                    "CD4": "images/CD4.png",
+                    "CD8": "images/CD8.png",
+                    "CD20": "images/CD20.png",
+                    "CD68": "images/CD68.png",
+                    "CK": "images/CK.png",
+                    "DAPI": "images/DAPI.png",
+                    "FOXP3": "images/FOXP3.png",
+                    "Ki67": "images/Ki67.png",
+                    "PD-1": "images/PD-1.png",
+                    "PD-L1": "images/PD-L1.png"
+                },
+                "Lung Tissue": {
+                    "HLA-DR": "images/HLA-DR.jpg",
+                    "Ki67": "images/Ki67.jpg",
+                    "LAG3": "images/LAG3.jpg",
+                    "NaK-ATPase": "images/NaK-ATPase.jpg",
+                    "panCK": "images/panCK.jpg",
+                    "PD-1": "images/PD-1.jpg",
+                    "PD-L1": "images/PD-L1.jpg",
+                    "Vimentin": "images/Vimentin.jpg",
+                    "CD4": "images/CD4.jpg",
+                    "CD8": "images/CD8.jpg",
+                    "CD11b": "images/CD11b.jpg",
+                    "CD11c": "images/CD11c.jpg",
+                    "CD15": "images/CD15.jpg",
+                    "CD20": "images/CD20.jpg",
+                    "CD25": "images/CD25.jpg",
+                    "CD38": "images/CD38.jpg"
+                }
+            }
+        }
+        hallwayImageBlend().init(hw__blender_config);
+    </script>
+
+</body>
+</html>
+
+
+
+

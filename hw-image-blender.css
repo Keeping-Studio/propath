@@ -14,39 +14,13 @@
     --max-width: 1000px;
     --disabled-background:white;
     --cursor: auto;
-    --heading-font: Poppins;
-    --text-font-regular: Heebo-Regular;
-    --text-font-bold: Heebo-Bold;
 }
-@font-face {
-    font-family: Poppins;
-    src: url(Poppins-SemiBold.ttf);
-}
-@font-face {
-    font-family: Heebo-Regular;
-    src: url(Heebo-Regular.ttf);
-}
-@font-face {
-    font-family: Heebo-Bold;
-    src: url(Heebo-Bold.ttf);
-}
-#information-title,
-.category-button {
-    font-family: var(--heading-font);
-}
-
 #information-content,
 #information-subtitle {
-    font-family: var(--text-font-regular);
     letter-spacing: 0.13px;
     color: var(--background-blue);
 }
-#selection-button-container .click_button {
-    font-family: var(--text-font-bold);
-}
 #hallway-blender-root {
-    max-width: var(--max-width);
-    max-width: 1000px;
     transition: 0.5s;
 }
 
