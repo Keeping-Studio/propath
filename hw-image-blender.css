@@ -113,7 +113,6 @@ body,
     background-color: var(--text-white);
     padding: 10px 15px;
     font-size: 12px;
-    font-weight: bold;
     border-radius: 4px;
     transition: 0.2s;
     min-width: 60px;
@@ -128,6 +127,7 @@ body,
     background-color: var(--text-white);
     color: var(--text-dark);
     font-size: 18px;
+    font-weight: bold;
     border-radius: 4px;
     transition: 0.2s;
     min-width: 80px;
