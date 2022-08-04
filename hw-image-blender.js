@@ -48,7 +48,7 @@ function hallwayImageBlend() {
             }
 
             const getUpdateString = (key) => {
-                return `${countWithinEachCategory[key]} markers on ${categoryButtonOverlayKeys[key].toLowerCase()}`;
+                return `${countWithinEachCategory[key]} protein targets on a single section of ${categoryButtonOverlayKeys[key].toLowerCase()}`;
             }
 
             // This function needs refactoring if data switches to the correct way
@@ -174,7 +174,7 @@ function hallwayImageBlend() {
         function addCategoryButtonEventListeners() {
             const buttonContainer = document.getElementById('selection-button-container');
             const categoryButtons = document.getElementsByClassName('category-button');
-            const informationOverlay = document.getElementById("information-content");
+            const informationOverlay = document.getElementById("information-title");
             const categoryButtonsLength = categoryButtons.length;
 
             for (let i = 0; i < categoryButtonsLength; i++) {
@@ -286,7 +286,7 @@ function hallwayImageBlend() {
             }
         }
         function addEscapedValues(settings) {
-            const informationTitle = document.querySelector('#information-title');
+            const informationTitle = document.querySelector('#information-content');
             const informationSubtitle = document.querySelector('#information-subtitle');
             informationTitle.textContent = settings.string_title;
             informationSubtitle.textContent = settings.string_subtitle;
