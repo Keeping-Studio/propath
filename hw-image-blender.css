@@ -61,7 +61,8 @@
     font-size: 18px;
     padding-bottom: 8px;
     letter-spacing: 0.18px;
-    color: var(--text-white);
+    color: #05d6a0;
+    font-weight: bold;
 }
 
 #button-container {
