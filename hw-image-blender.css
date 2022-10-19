@@ -189,8 +189,8 @@ body,
 
 #hallway-parent-image-container .selected-image-4::after,
 #selection-button-container button.selected-image-4 {
-    background: var(--primary-green);
-    border-color: var(--primary-green);
+    background: var(--primary-yellow);
+    border-color: var(--primary-yellow);
 }
 
 #hallway-parent-image-container .selected-image-5::after,
@@ -201,19 +201,17 @@ body,
 
 #hallway-parent-image-container .selected-image-6::after,
 #selection-button-container button.selected-image-6 {
-    background: var(--primary-yellow);
-    border-color: var(--primary-yellow);
+    background: var(--primary-green);
+    border-color: var(--primary-green);
 }
 
-#selection-button-container button.selected-image-3,
-#selection-button-container button.selected-image-4,
 #selection-button-container button {
     color: var(--text-grey);
 }
 
 #selection-button-container button.selected-image-1,
 #selection-button-container button.selected-image-2,
-#selection-button-container button.selected-image-4,
+#selection-button-container button.selected-image-6,
 #selection-button-container button.selected-image-5 {
     color: var(--text-white);
 }
