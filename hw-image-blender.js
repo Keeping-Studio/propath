@@ -43,7 +43,7 @@ function hallwayImageBlend() {
                 const itemKey = `button-number-${categoryCalculationsCount}`;
                 categoryButtonOverlayKeys[itemKey] = item;
                 countWithinEachCategory[itemKey] = Object.keys(data[item]).length;
-                getImageDimensions(item, itemKey);
+                getImageDimensions(data[item], itemKey);
                 categoryCalculationsCount++;
             }
 
@@ -55,10 +55,10 @@ function hallwayImageBlend() {
             function getImageDimensions(item, key) {
                 const img = new Image();
                 let imageDimensionsCount = 0;
-                img.src = Object.values(data[item])[imageDimensionsCount];
+                img.src = item[Object.keys(item)[imageDimensionsCount]].image;
                 img.addEventListener('error', function handleError() {
                     imageDimensionsCount++;
-                    img.src = Object.values(data[item])[imageDimensionsCount];
+                    img.src = item[Object.keys(item)[imageDimensionsCount]].image;
                 })
                     img.onload = function () {
                     ratios[key] = this.height / this.width;
@@ -75,7 +75,7 @@ function hallwayImageBlend() {
             return {getUpdateString, getCurrentRatio, getCurrentWidth}
         })();
 
-        // Used to create the buttons of both the categories and inputs
+        // Create buttons of both the categories and inputs
         function createButton(title, classesToAdd, counter = undefined) {
             const button = document.createElement('button');
             button.textContent = title;
@@ -103,7 +103,7 @@ function hallwayImageBlend() {
             return containerDiv;
         }
 
-        // Tonsil Tissue, Lung Tissue and Lymph node buttons
+        // Create all tissue category buttons, and marker buttons within each
         function createCategoryButtons(data) {
             let first_iteration = true;
             let categoryIterationCount = 1;
@@ -114,15 +114,19 @@ function hallwayImageBlend() {
                 document.getElementById('category-button-container').appendChild(
                     createButton((key.length === 0 ? categoryIterationCount : key), classesToAdd));
 
-                setUp(data[key], `button-number-${categoryIterationCount}`);
+                createTissueMarkerButtons(data[key], `button-number-${categoryIterationCount}`);
                 first_iteration = false;
                 categoryIterationCount++;
             }
         }
 
-        function setUp(keyValuePairs, additionalClasses) {
+        function createTissueMarkerButtons(keyValuePairs, additionalClasses) {
             for (const property in keyValuePairs) {
-                const buttonClassesToAdd = [`click_button`, `${additionalClasses}`, 'hide'];
+                let buttonClassesToAdd = [`click_button`, additionalClasses, 'hide'];
+
+                if(keyValuePairs[property].preselect) {
+                    buttonClassesToAdd.push('hw__blender__preselect');
+                }
 
                 // Create buttons
                 document.getElementById('selection-button-container').appendChild(
@@ -131,7 +135,7 @@ function hallwayImageBlend() {
 
                 // Create images
                 document.getElementById('hallway-parent-image-container').appendChild(
-                    createImageContainer(keyValuePairs[property], ["image-container"], count)
+                    createImageContainer(keyValuePairs[property].image, ["image-container"], count)
                 );
 
 
@@ -198,8 +202,21 @@ function hallwayImageBlend() {
                         reset();
                         enableButtons();
 
-                        // Get first instance of button class and click display it
-                        document.querySelector(`.click_button.${categoryClass}`).click()
+                        // Simulate clicks on buttons that are meant to be preselected
+                        const preselectButtons = document.querySelectorAll(`.click_button.${categoryClass}.hw__blender__preselect`);
+                        if(preselectButtons.length === 0) {
+                            // select first button as default, since no preselected items exist
+                            document.querySelector(`.click_button.${categoryClass}`).click();
+                        } else {
+                            preselectButtons.forEach((el,i) => {
+                                // only preselect a max of 6 tissue markers
+                                if(i < 6) {
+                                    el.click();
+                                }
+                            });
+                        }
+
+
                     }
                 )
             }
