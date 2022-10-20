@@ -1,0 +1,14 @@
+<!-- In Webflow, create a HTML Embed element and add this code, to appear AFTER the CMS data extraction snippet -->
+<link rel="stylesheet" href="https://keeping-studio.github.io/propath/hw-image-blender.css" type="text/css">
+<script src="https://keeping-studio.github.io/propath/hw-image-blender.js"></script>
+<script>
+  const hw__blender_config = {
+    settings: {
+      root_element_id: 'hw__blender',
+      string_title: 'Produced at Propath UK using the Lunaphore COMET™',
+      string_subtitle:'Select a tissue and then tap up to 6 targets to toggle on and off'
+    },
+    data: window.hw__blender_data.tissues
+  };
+  hallwayImageBlend().init(hw__blender_config);
+</script>

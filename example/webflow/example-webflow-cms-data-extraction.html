@@ -1,0 +1,10 @@
+<!-- In Webflow, add a Collection List element to the page, and within the Collection Item element, add a HTML Embed element with this code -->
+<!-- This assumed you've set up the CMS collections to include Tissues and Markers with the correct fields, see screenshots for references -->
+<script>
+    window.hw__blender_data = window.hw__blender_data || { tissues: [] };
+    if(!("{{wf {&quot;path&quot;:&quot;tissue:name&quot;,&quot;type&quot;:&quot;PlainText&quot;\} }}" in window.hw__blender_data.tissues)) {
+        window.hw__blender_data.tissues["{{wf {&quot;path&quot;:&quot;tissue:name&quot;,&quot;type&quot;:&quot;PlainText&quot;\} }}"] = [];
+    }
+    window.hw__blender_data.tissues["{{wf {&quot;path&quot;:&quot;tissue:name&quot;,&quot;type&quot;:&quot;PlainText&quot;\} }}"]["{{wf {&quot;path&quot;:&quot;display-name&quot;,&quot;type&quot;:&quot;PlainText&quot;\} }}"] = { image: "{{wf {&quot;path&quot;:&quot;image&quot;,&quot;type&quot;:&quot;ImageRef&quot;\} }}", preselect: {{wf {&quot;path&quot;:&quot;preselect&quot;,&quot;type&quot;:&quot;Bool&quot;\} }} };
+    console.log("[Image Blender] Added Tissue Marker: {{wf {&quot;path&quot;:&quot;tissue:name&quot;,&quot;type&quot;:&quot;PlainText&quot;\} }} >  {{wf {&quot;path&quot;:&quot;display-name&quot;,&quot;type&quot;:&quot;PlainText&quot;\} }}");
+</script>
